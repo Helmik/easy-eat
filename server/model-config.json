@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "AccessToken": {
+    "dataSource": "mySqlDb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mySqlDb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mySqlDb",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "mySqlDb",
+    "public": false
+  },
+  "user": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "CatStatus": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "CatPortion": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "CatDiscountType": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Customer": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Friendship": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Product": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Price": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Discount": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Visit": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Place": {
+    "dataSource": "mySqlDb",
+    "public": true
+  }
+}

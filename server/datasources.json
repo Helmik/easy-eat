@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mySqlDb": {
+    "host": "localhost",
+    "port": 3306,
+    "url": "",
+    "database": "easy-eat",
+    "password": "root",
+    "name": "mySqlDb",
+    "user": "root",
+    "connector": "mysql"
+  }
+}
