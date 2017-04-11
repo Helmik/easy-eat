@@ -4,7 +4,6 @@ var data = require('./database/index.js')
  * Created by developeri on 4/10/17.
  */
 module.exports = function(app) {
-  console.log("Create models start...");
   // Get all models
   var props = {
     all_models: require('../model-config.json'),
@@ -21,9 +20,11 @@ module.exports = function(app) {
     if (!actual) {
       mysql.autoupdate(function(error, result) {
         if (error) throw error;
-        data(app);
         console.log("Models created ", result);
+        data(app);
       });
+    } else {
+      data(app);
     }
   });
 }
