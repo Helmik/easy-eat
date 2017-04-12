@@ -5,7 +5,8 @@
       "password": "admin",
       "email": "admin@admin.com",
       "emailVerified": true,
-      "status": "1"
+      "status": "1",
+      "id": 1
     }
   ],
   "model": "user"
