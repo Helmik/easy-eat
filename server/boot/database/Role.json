@@ -1,0 +1,9 @@
+{
+  "data": [
+    {"name": "admin", "id": 1},
+    {"name": "customer", "id": 2},
+    {"name": "waitress", "id": 3},
+    {"name": "manager", "id": 4}
+  ],
+  "model": "Role"
+}

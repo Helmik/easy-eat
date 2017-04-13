@@ -1,0 +1,24 @@
+{
+  "name": "CatRequestStatus",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "friendships": {
+      "type": "hasMany",
+      "model": "Friendship",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
