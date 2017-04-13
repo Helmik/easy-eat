@@ -6,7 +6,35 @@
       "email": "admin@admin.com",
       "emailVerified": true,
       "status": "1",
-      "id": 1
+      "created": "2017-04-12T13:40:01.047Z",
+      "lastUpdated": "2017-04-12T13:40:01.047Z"
+    },
+    {
+      "username": "helmik",
+      "email": "helmik@helmik.mx",
+      "emailVerified": true,
+      "status": "1",
+      "created": "2017-04-12T13:40:01.047Z",
+      "lastUpdated": "2017-04-12T13:40:01.047Z",
+      "password": "helmik"
+    },
+    {
+      "username": "escamilla",
+      "email": "escamill@escamilla.mx",
+      "emailVerified": true,
+      "status": "1",
+      "created": "2017-04-12T13:40:01.047Z",
+      "lastUpdated": "2017-04-12T13:40:01.047Z",
+      "password": "escamilla"
+    },
+    {
+      "username": "torres",
+      "email": "torres@torres.mx",
+      "emailVerified": true,
+      "status": "1",
+      "created": "2017-04-12T13:40:01.047Z",
+      "lastUpdated": "2017-04-12T13:40:01.047Z",
+      "password": "torres"
     }
   ],
   "model": "user"

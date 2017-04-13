@@ -5,9 +5,39 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "token": {
+      "type": "string"
+    }
+  },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "customer": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": ""
+    },
+    "customer2": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": ""
+    },
+    "customers": {
+      "type": "hasMany",
+      "model": "Customer",
+      "foreignKey": ""
+    },
+    "customers2": {
+      "type": "hasMany",
+      "model": "Customer",
+      "foreignKey": ""
+    },
+    "catRequestStatus": {
+      "type": "belongsTo",
+      "model": "CatRequestStatus",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",

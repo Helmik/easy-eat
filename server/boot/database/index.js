@@ -32,26 +32,30 @@ module.exports = function(app) {
     promises.push(saveData(models[model.model], model.data));
   });
   Promise.all(promises).then(function(response) {
-    console.log('Data inserted', response);
-    // Relationships between customers and roles
-    var relationships = [
-      {role: 'Admin', username: 'admin'},
-    ];
-    relationships.forEach(function(relationship) {
-      var queryRole = {where: {name: relationship.role}};
-      console.log(queryRole);
-      models.Role.find(queryRole, function(err, role) {
-        if (err) throw err;
-        var queryName = {where: {username: relationship.username}};
-        models.User.find(queryName, function(err, user) {
+    setTimeout(function(){
+      console.log('Data inserted', response);
+      // Relationships between customers and roles
+      var relationships = [
+        {role: 'Admin', username: 'admin'},
+        {role: 'Customer', username: 'helmik'},
+        {role: 'Customer', username: 'escamilla'},
+        {role: 'Customer', username: 'torres'},
+      ];
+      relationships.forEach(function(relationship) {
+        var queryRole = {where: {name: relationship.role}};
+        models.Role.find(queryRole, function(err, role) {
           if (err) throw err;
-          role.pop().principals.create({
-            principalType: RoleMapping.USER,
-            principalId: user.pop().id,
+          var queryName = {where: {username: relationship.username}};
+          models.User.find(queryName, function(err, user) {
+            if (err) throw err;
+            role.pop().principals.create({
+              principalType: RoleMapping.USER,
+              principalId: user.pop().id,
+            });
           });
         });
       });
-    });
+    },500);
   }).catch(function(error) {
     console.log(error);
   });

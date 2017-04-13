@@ -32,7 +32,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "visits": {
+      "type": "hasMany",
+      "model": "Visit",
+      "foreignKey": ""
+    },
+    "products": {
+      "type": "hasMany",
+      "model": "Product",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",

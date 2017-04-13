@@ -15,7 +15,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "product": {
+      "type": "belongsTo",
+      "model": "Product",
+      "foreignKey": ""
+    },
+    "discount": {
+      "type": "belongsTo",
+      "model": "Discount",
+      "foreignKey": ""
+    },
+    "catPortion": {
+      "type": "belongsTo",
+      "model": "CatPortion",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",

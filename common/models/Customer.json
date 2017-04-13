@@ -14,7 +14,28 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "user": {
+      "type": "hasOne",
+      "model": "user",
+      "foreignKey": ""
+    },
+    "friendship": {
+      "type": "belongsTo",
+      "model": "Friendship",
+      "foreignKey": ""
+    },
+    "friendship2": {
+      "type": "belongsTo",
+      "model": "Friendship",
+      "foreignKey": ""
+    },
+    "visits": {
+      "type": "hasMany",
+      "model": "Visit",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",

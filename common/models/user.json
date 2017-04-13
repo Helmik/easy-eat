@@ -7,13 +7,38 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "customer": {
+      "type": "hasOne",
+      "model": "Customer",
+      "foreignKey": ""
+    },
+    "catStatus": {
+      "type": "belongsTo",
+      "model": "CatStatus",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "login"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "logout"
     }
   ],
   "methods": {}

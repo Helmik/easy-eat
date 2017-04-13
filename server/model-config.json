@@ -75,5 +75,12 @@
   "Place": {
     "dataSource": "mySqlDb",
     "public": true
+  },
+  "Email": {
+    "dataSource": "gmail"
+  },
+  "CatRequestStatus": {
+    "dataSource": "mySqlDb",
+    "public": true
   }
 }

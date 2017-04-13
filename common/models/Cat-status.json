@@ -12,7 +12,33 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "products": {
+      "type": "hasMany",
+      "model": "Product",
+      "foreignKey": ""
+    },
+    "users": {
+      "type": "hasMany",
+      "model": "user",
+      "foreignKey": ""
+    },
+    "visits": {
+      "type": "hasMany",
+      "model": "Visit",
+      "foreignKey": ""
+    },
+    "catPortions": {
+      "type": "hasMany",
+      "model": "CatPortion",
+      "foreignKey": ""
+    },
+    "catDiscountTypes": {
+      "type": "hasMany",
+      "model": "CatDiscountType",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",

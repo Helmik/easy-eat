@@ -12,7 +12,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "prices": {
+      "type": "hasMany",
+      "model": "Price",
+      "foreignKey": ""
+    },
+    "catDiscountType": {
+      "type": "belongsTo",
+      "model": "CatDiscountType",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",

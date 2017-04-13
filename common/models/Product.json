@@ -20,7 +20,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "catStatus": {
+      "type": "belongsTo",
+      "model": "CatStatus",
+      "foreignKey": ""
+    },
+    "prices": {
+      "type": "hasMany",
+      "model": "Price",
+      "foreignKey": ""
+    },
+    "place": {
+      "type": "belongsTo",
+      "model": "Place",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",

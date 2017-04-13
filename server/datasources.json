@@ -12,5 +12,22 @@
     "name": "mySqlDb",
     "user": "root",
     "connector": "mysql"
+  },
+  "gmail": {
+    "name": "gmail",
+    "defaultForType": "mail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "helmik.test@gmail.com",
+          "pass": "2914020h*"
+        }
+      }
+    ]
   }
 }

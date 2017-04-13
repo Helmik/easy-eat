@@ -7,7 +7,7 @@ module.exports = function(app) {
   // Get all models
   var props = {
     all_models: require('../model-config.json'),
-    exclude: ['User', '_meta']
+    exclude: ['User', '_meta', 'Email']
   };
   // Get model's key
   var getModels = function() {
