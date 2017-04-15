@@ -10,6 +10,7 @@ module.exports = function(app) {
   data.push(require('./Role.json'));
   data.push(require('./catStatus.json'));
   data.push(require('./user.json'));
+  data.push(require('./CatRequestStatus.json'));
   var saveData = function(model, data) {
     // Define a promise
     return new Promise(function(resolve, rejected) {
@@ -43,14 +44,14 @@ module.exports = function(app) {
       ];
       relationships.forEach(function(relationship) {
         var queryRole = {where: {name: relationship.role}};
-        models.Role.find(queryRole, function(err, role) {
+        models.Role.findOne(queryRole, function(err, role) {
           if (err) throw err;
           var queryName = {where: {username: relationship.username}};
-          models.User.find(queryName, function(err, user) {
+          models.User.findOne(queryName, function(err, user) {
             if (err) throw err;
-            role.pop().principals.create({
+            role.principals.create({
               principalType: RoleMapping.USER,
-              principalId: user.pop().id,
+              principalId: user.id,
             });
           });
         });

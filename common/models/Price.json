@@ -40,5 +40,8 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": {}
+  "methods": {},
+  "scope": {
+    "include": ["product"]
+  }
 }

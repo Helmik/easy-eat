@@ -44,5 +44,8 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": {}
+  "methods": {},
+  "scope": {
+    "include": ["user"]
+  }
 }
