@@ -1,34 +1,31 @@
 'use strict';
 
 module.exports = function(Customer) {
-    Customer.beforeRemote( 'create', ( ctx, modelInstance, next) => {
+    Customer.beforeRemote( 'create', (ctx, modelInstance, next) => {
         if(ctx.req.body.userId) {
             Customer.findOne({where: {userId: ctx.req.body.userId}}).then(customer => {
-                next();
                 if(!customer) {
                     next();
                 } else {
-                    next("The uer has an customer already");
+                    next("The uer has a customer already");
                 }
             })
         } else {
             next("userId is required");
         }
     });
-    Customer.afterRemote( 'create', ( ctx, modelInstance, next) => {
+    /*Customer.afterRemote( 'create', ( ctx, modelInstance, next) => {
         Customer.app.models.user.findOne({where: {id: ctx.result.userId}}).then(user => {
-            user.customerId = ctx.result.id;
+            //user.customerId = ctx.result.id;
             if(user) {
-                user.replaceAttributes(user, function(err, obj){
+                user.updateAttributes({customerId: ctx.result.id}, function(err, obj){
                     if(err) {
-                        console.log("1", err);
                         return next(err);
                     }
                     next();
                 })
             }
         }).catch(err => {
-            console.log("2", err);
             next(err);
         });
         /*Customer.app.models.user.upsertWithWhere(
@@ -38,6 +35,6 @@ module.exports = function(Customer) {
                 if(err) return next(err);
                 next();
             }
-        );*/
-    });
+        );
+    });*/
 };

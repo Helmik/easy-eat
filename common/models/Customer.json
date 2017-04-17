@@ -5,6 +5,11 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {
+    "include": [
+      "user"
+    ]
+  },
   "properties": {
     "notifications": {
       "type": "string"
@@ -16,7 +21,7 @@
   "validations": [],
   "relations": {
     "user": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "user",
       "foreignKey": ""
     },
@@ -44,8 +49,5 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": {},
-  "scope": {
-    "include": ["user"]
-  }
+  "methods": {}
 }

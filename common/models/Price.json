@@ -5,6 +5,11 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {
+    "include": [
+      "product"
+    ]
+  },
   "properties": {
     "amount": {
       "type": "number",
@@ -40,8 +45,5 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": {},
-  "scope": {
-    "include": ["product"]
-  }
+  "methods": {}
 }

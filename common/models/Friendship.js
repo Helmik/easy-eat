@@ -16,7 +16,7 @@ module.exports = function(Friendship) {
     }));
     Promise.all(customers).then( customerUser => {
       var friendshipQuery = {
-        were: {
+        where: {
           or: [
             {
               and:[
@@ -34,6 +34,7 @@ module.exports = function(Friendship) {
         }
       };
       Friendship.findOne(friendshipQuery).then(friendship => {
+
         if(!friendship) {
           var token = generateToken(customerId, customer2Id);
           Friendship.create({
@@ -42,8 +43,8 @@ module.exports = function(Friendship) {
             catRequestStatus: 1,
             token
           }).then( friendshipCreated => {
-            var contentMessage = '<h1>Hello ' + customerUser[0].user.firstName + '!</h1><p>' +
-                customerUser[1].user.firstName + ' wants to get connecti with you in easy eat</p>';
+            var contentMessage = '<h1>Hello ' + customerUser[0].user().firstName + '!</h1><p>' +
+                customerUser[1].user().firstName + ' wants to get connecti with you in easy eat</p>';
             Friendship.app.models.Email.send({
               to: 'helmik.test@gmail.com',
               from: 'no-reply@gmail.com',
@@ -51,15 +52,15 @@ module.exports = function(Friendship) {
               html: contentMessage,
             }, function(err, mail) {
               if (err) return err;
-              next(null, mail);
+              next(null, friendshipCreated);
             });
           }).catch(error => {
             console.log("Error on create friendship", error);
             next(error);
           });
         } else {
-          console.error("Friend ship already exist");
-          next("Friend ship already exist");
+          console.error("Friendship already exist");
+          next("Friendship already exist");
         }
       }).catch(error => {
         console.error("Error on search relationship", error);
@@ -70,10 +71,18 @@ module.exports = function(Friendship) {
       next(error);
     });
   };
+  /**
+   *
+   * Remote methods
+   *
+   **/
   Friendship.remoteMethod('sendRequest', {
     accepts: [{arg: 'customerId1', type: 'number', required: true},
               {arg: 'customer2Id', type: 'number', required: true}],
     http: {path: '/sendRequest', verb: 'post'},
     returns: {root: true, type: 'object'},
   });
+  /*Friendship.remoteMethod('accept'. {
+    http:
+  })*/
 };

@@ -82,5 +82,17 @@
   "CatRequestStatus": {
     "dataSource": "mySqlDb",
     "public": true
+  },
+  "Physician": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "Patient": {
+    "dataSource": "mySqlDb",
+    "public": true
+  },
+  "PhysicianPatient": {
+    "dataSource": "mySqlDb",
+    "public": false
   }
 }
