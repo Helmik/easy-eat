@@ -3,6 +3,7 @@
     {
       "username": "admin",
       "password": "admin",
+      "firstName": "admin",
       "email": "admin@admin.com",
       "emailVerified": true,
       "status": "1",
@@ -11,6 +12,7 @@
     },
     {
       "username": "helmik",
+      "firstName": "helmik",
       "email": "helmik@helmik.mx",
       "emailVerified": true,
       "status": "1",
@@ -20,6 +22,7 @@
     },
     {
       "username": "escamilla",
+      "firstName": "escamilla",
       "email": "escamill@escamilla.mx",
       "emailVerified": true,
       "status": "1",
@@ -29,6 +32,7 @@
     },
     {
       "username": "torres",
+      "firstName": "torres",
       "email": "torres@torres.mx",
       "emailVerified": true,
       "status": "1",

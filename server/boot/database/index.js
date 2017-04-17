@@ -20,7 +20,7 @@ module.exports = function(app) {
           // Fill table
           resolve(model.create(data));
         } else {
-          resolve('Table has data already.');
+          resolve('Table has data already.' + new Date());
         }
       }).catch(function(error) {
         rejected(error);

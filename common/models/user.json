@@ -5,7 +5,15 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string"
+    }
+  },
   "validations": [],
   "relations": {
     "customer": {

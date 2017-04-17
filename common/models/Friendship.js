@@ -4,32 +4,30 @@ module.exports = function(Friendship) {
   function generateToken(value1, value2){
     return md5(String(value1) + String(value2));
   }
-  Friendship.sendRequest = function(customerId, customerId2, next) {
+  Friendship.sendRequest = function(customerId, customer2Id, next) {
     var customers = [];
-    customers.push(Friendship.models.Customer.findOne({
+    customers.push(Friendship.app.models.Customer.findOne({
+      include: ['user'],
       where: {id: customerId},
     }));
-    customers.push(Friendship.models.Customer.findOne({
-      where: {id: customerId2},
+    customers.push(Friendship.app.models.Customer.findOne({
+      include: ['user'],
+      where: {id: customer2Id},
     }));
-    Promise.all(function(err, data) {
-      if (err) {
-        console.log(err);
-        next(err);
-      }
+    Promise.all(customers).then( customerUser => {
       var friendshipQuery = {
         were: {
           or: [
             {
               and:[
                 { customerId: customerId },
-                { customerId2: customerId2 }
+                { customer2Id: customer2Id }
               ]
             },
             {
               and: [
-                { customerId: customerId2 },
-                { customerId2: customerId }
+                { customerId: customer2Id },
+                { customer2Id: customerId }
               ]
             }
           ]
@@ -37,16 +35,15 @@ module.exports = function(Friendship) {
       };
       Friendship.findOne(friendshipQuery).then(friendship => {
         if(!friendship) {
-          console.log("Adding friendship...");
-          var token = generateToken(customerId, customerId2);
+          var token = generateToken(customerId, customer2Id);
           Friendship.create({
             customerId,
-            customerId2,
+            customer2Id,
             catRequestStatus: 1,
             token
           }).then( friendshipCreated => {
-            var contentMessage = '<h1>Hello ' + name + '!</h1><p>' +
-              friend + ' wants to get connecti with you in easy eat</p>';
+            var contentMessage = '<h1>Hello ' + customerUser[0].user.firstName + '!</h1><p>' +
+                customerUser[1].user.firstName + ' wants to get connecti with you in easy eat</p>';
             Friendship.app.models.Email.send({
               to: 'helmik.test@gmail.com',
               from: 'no-reply@gmail.com',
@@ -54,26 +51,29 @@ module.exports = function(Friendship) {
               html: contentMessage,
             }, function(err, mail) {
               if (err) return err;
-              console.log('email sent!');
               next(null, mail);
             });
           }).catch(error => {
+            console.log("Error on create friendship", error);
             next(error);
           });
+        } else {
+          console.error("Friend ship already exist");
+          next("Friend ship already exist");
         }
       }).catch(error => {
-        console.log(error);
+        console.error("Error on search relationship", error);
         next(error);
       });
     }).catch(error => {
-      console.log(error);
+      console.error("Error on search customers", error);
       next(error);
     });
-    /**/
   };
   Friendship.remoteMethod('sendRequest', {
-    accepts: [{arg: 'name', type: 'string', required: true},
-              {arg: 'friend', type: 'string', required: true}],
-    http: {path: '/senadMail', verb: 'post'}
+    accepts: [{arg: 'customerId1', type: 'number', required: true},
+              {arg: 'customer2Id', type: 'number', required: true}],
+    http: {path: '/sendRequest', verb: 'post'},
+    returns: {root: true, type: 'object'},
   });
 };
