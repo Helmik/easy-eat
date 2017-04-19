@@ -22,16 +22,6 @@
       "model": "Customer",
       "foreignKey": ""
     },
-    "customers": {
-      "type": "hasMany",
-      "model": "Customer",
-      "foreignKey": ""
-    },
-    "customers2": {
-      "type": "hasMany",
-      "model": "Customer",
-      "foreignKey": ""
-    },
     "catRequestStatus": {
       "type": "belongsTo",
       "model": "CatRequestStatus",

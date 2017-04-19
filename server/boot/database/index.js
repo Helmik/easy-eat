@@ -11,7 +11,7 @@ module.exports = function(app) {
   data.push(require('./catStatus.json'));
   data.push(require('./user.json'));
   data.push(require('./CatRequestStatus.json'));
-  var saveData = function(model, data) {
+  var saveData = (model, data) => {
     // Define a promise
     return new Promise(function(resolve, rejected) {
       // Count the data in table
@@ -32,31 +32,38 @@ module.exports = function(app) {
   data.map(function(model) {
     promises.push(saveData(models[model.model], model.data));
   });
-  Promise.all(promises).then(function(response) {
-    setTimeout(function(){
+  Promise.all(promises).then((response) => {
+    setTimeout(() => {
       console.log('Data inserted', response);
       // Relationships between customers and roles
       var relationships = [
-        {role: 'Admin', username: 'admin'},
-        {role: 'Customer', username: 'helmik'},
-        {role: 'Customer', username: 'escamilla'},
-        {role: 'Customer', username: 'torres'},
+        {role: 'admin', username: 'admin'},
+        {role: 'customer', username: 'helmik'},
+        {role: 'customer', username: 'escamilla'},
+        {role: 'waitress', username: 'torres'},
       ];
       relationships.forEach(function(relationship) {
         var queryRole = {where: {name: relationship.role}};
-        models.Role.findOne(queryRole, function(err, role) {
-          if (err) throw err;
-          var queryName = {where: {username: relationship.username}};
-          models.User.findOne(queryName, function(err, user) {
-            if (err) throw err;
-            role.principals.create({
-              principalType: RoleMapping.USER,
-              principalId: user.id,
+        models.Customer.count().then(count => {
+          if(count <= 0) {
+            models.Role.findOne(queryRole, function (err, role) {
+              if (err) throw err;
+              var queryName = {where: {username: relationship.username}};
+              models.User.findOne(queryName, function (err, user) {
+                if (err) throw err;
+                role.principals.create({
+                  principalType: RoleMapping.USER,
+                  principalId: user.id,
+                });
+                if (relationship.username !== 'admin') {
+                  models.Customer.create({userId: user.id});
+                }
+              });
             });
-          });
+          }
         });
       });
-    },500);
+    }, 500);
   }).catch(function(error) {
     console.log(error);
   });

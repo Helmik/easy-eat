@@ -5,11 +5,9 @@
   "options": {
     "validateUpsert": true
   },
-  "scope": {
-    "include": [
-      "user"
-    ]
-  },
+  "scope": [
+    "friendships"
+  ],
   "properties": {
     "notifications": {
       "type": "string"
@@ -25,13 +23,8 @@
       "model": "user",
       "foreignKey": ""
     },
-    "friendship": {
-      "type": "belongsTo",
-      "model": "Friendship",
-      "foreignKey": ""
-    },
-    "friendship2": {
-      "type": "belongsTo",
+    "friendships": {
+      "type": "hasMany",
       "model": "Friendship",
       "foreignKey": ""
     },
@@ -39,6 +32,12 @@
       "type": "hasMany",
       "model": "Visit",
       "foreignKey": ""
+    },
+    "customers": {
+      "type": "hasMany",
+      "model": "Customer",
+      "foreignKey": "",
+      "through": "Friendship"
     }
   },
   "acls": [
@@ -49,5 +48,6 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": {}
+  "methods": {},
+  "scope": ["customers"]
 }

@@ -2,7 +2,8 @@
 var md5 = require('md5');
 module.exports = function(Friendship) {
   function generateToken(value1, value2){
-    return md5(String(value1) + String(value2));
+    let timestamp =  String(+new Date()).split('').reverse().join('');
+    return timestamp+md5(String(value1) + String(value2));
   }
   Friendship.sendRequest = function(customerId, customer2Id, next) {
     var customers = [];
@@ -15,6 +16,13 @@ module.exports = function(Friendship) {
       where: {id: customer2Id},
     }));
     Promise.all(customers).then( customerUser => {
+      if(!customerUser[0]) {
+        next('The user does not exist.');
+      }
+      if(!customerUser[1]){
+        next('To invite someone, it must been registered.');
+      }
+      console.log(customerUser);
       var friendshipQuery = {
         where: {
           or: [
@@ -40,11 +48,12 @@ module.exports = function(Friendship) {
           Friendship.create({
             customerId,
             customer2Id,
-            catRequestStatus: 1,
+            catRequestStatusId: 2,
             token
           }).then( friendshipCreated => {
             var contentMessage = '<h1>Hello ' + customerUser[0].user().firstName + '!</h1><p>' +
-                customerUser[1].user().firstName + ' wants to get connecti with you in easy eat</p>';
+                customerUser[1].user().firstName + ' wants to get connecti with you in easy eat</p>'+
+                'click in this <a href="http://localhost:3000/api/Friendships/accept?token=' + token + '" target="_blank">link</a>';
             Friendship.app.models.Email.send({
               to: 'helmik.test@gmail.com',
               from: 'no-reply@gmail.com',
@@ -71,6 +80,19 @@ module.exports = function(Friendship) {
       next(error);
     });
   };
+  Friendship.accept = (token, next) => {
+    console.log(token);
+    Friendship.findOne({where: {token,}}).then(friendship => {
+      if(friendship){
+        friendship.catRequestStatusId = 3;
+        Friendship.upsert(friendship).then(success => {
+          next(null,success);
+        })
+      } else {
+        next('The friendship request does not exist');
+      }
+    });
+  };
   /**
    *
    * Remote methods
@@ -82,7 +104,9 @@ module.exports = function(Friendship) {
     http: {path: '/sendRequest', verb: 'post'},
     returns: {root: true, type: 'object'},
   });
-  /*Friendship.remoteMethod('accept'. {
-    http:
-  })*/
+  Friendship.remoteMethod('accept', {
+    accepts: [{arg: 'token', type: 'string', required: true}],
+    http: {verb: 'get'},
+    returns: {root: true, type: 'object'},
+  });
 };
