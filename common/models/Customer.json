@@ -1,13 +1,18 @@
 {
   "name": "Customer",
-  "base": "PersistedModel",
+  "base": "persistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "scope": [
-    "friendships"
-  ],
+  "mixins": {
+    "TimeStamp": true
+  },
+  "scope": {
+    "include": [
+      "friendships"
+    ]
+  },
   "properties": {
     "notifications": {
       "type": "string"
@@ -32,12 +37,6 @@
       "type": "hasMany",
       "model": "Visit",
       "foreignKey": ""
-    },
-    "customers": {
-      "type": "hasMany",
-      "model": "Customer",
-      "foreignKey": "",
-      "through": "Friendship"
     }
   },
   "acls": [
@@ -46,8 +45,13 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     }
   ],
-  "methods": {},
-  "scope": ["customers"]
+  "methods": {}
 }

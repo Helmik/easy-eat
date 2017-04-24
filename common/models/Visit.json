@@ -1,9 +1,12 @@
 {
   "name": "Visit",
-  "base": "PersistedModel",
+  "base": "persistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
   },
   "properties": {
     "comment": {
@@ -40,6 +43,12 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     }
   ],
   "methods": {}

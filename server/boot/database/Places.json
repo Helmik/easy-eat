@@ -1,0 +1,53 @@
+{
+  "data": [{
+      "name": "McCarthys Circuito",
+      "ranking": 0,
+      "country": "Mexico",
+      "state": "Puebla",
+      "address": "Circuito Juan Pablo II #2907",
+      "zipCode": "72400",
+      "phone": "01 222 246 3069",
+      "location": { "lat": 19.040566, "lng": -98.228605 }
+    },
+    {
+      "name": "El microbito",
+      "ranking": 0,
+      "country": "Mexico",
+      "state": "Puebla",
+      "address": " Calle 6 Sur 306, Centro Histórico",
+      "zipCode": "72000",
+      "phone": "01 222 232 8604",
+      "location": { "lat": 19.041366, "lng": -98.195387 }
+    },
+    {
+      "name": "A go go",
+      "ranking": 0,
+      "country": "Mexico",
+      "state": "Puebla",
+      "address": "Calle 3 Ote. 207, Centro",
+      "zipCode": "72000",
+      "phone": "01 222 232 2396",
+      "location": { "lat": 19.042531, "lng": -98.196930 }
+    },
+    {
+      "name": "Charles",
+      "ranking": 0,
+      "country": "Mexico",
+      "state": "Puebla",
+      "address": "14 Oriente No. 414, San Andrés Cholula",
+      "zipCode": "72810",
+      "location": { "lat": 19.055009, "lng": -98.291983 }
+    },
+    {
+      "name": "Büra",
+      "ranking": 0,
+      "country": "Mexico",
+      "state": "Puebla",
+      "address": "14 Oriente No. 408, San Andrés Cholula",
+      "zipCode": "72810",
+      "phone": "01 222 246 3069",
+      "location": { "lat": 19.055016, "lng": -98.292238 }
+    }
+  ],
+  "model": "Place"
+}

@@ -1,6 +1,6 @@
 {
   "name": "Price",
-  "base": "PersistedModel",
+  "base": "persistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -9,6 +9,9 @@
     "include": [
       "product"
     ]
+  },
+  "mixins": {
+    "TimeStamp": true
   },
   "properties": {
     "amount": {
@@ -43,6 +46,12 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     }
   ],
   "methods": {}

@@ -1,5 +1,5 @@
 'use strict';
-//var data = require('./catStatus.json');
+//var data = require('./CatStatus.json');
 /**
  * Created by developeri on 4/10/17.
  */
@@ -8,9 +8,10 @@ module.exports = function(app) {
   var data = [];
   // Get data to save
   data.push(require('./Role.json'));
-  data.push(require('./catStatus.json'));
-  data.push(require('./user.json'));
+  data.push(require('./CatStatus.json'));
+  data.push(require('./Users.json'));
   data.push(require('./CatRequestStatus.json'));
+  data.push(require('./Places.json'));
   var saveData = (model, data) => {
     // Define a promise
     return new Promise(function(resolve, rejected) {

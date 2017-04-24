@@ -1,5 +1,6 @@
 'use strict';
-var data = require('./database/index.js')
+var data = require('./database/index.js');
+var loopback = require('loopback');
 /**
  * Created by developeri on 4/10/17.
  */

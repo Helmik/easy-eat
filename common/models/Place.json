@@ -1,19 +1,19 @@
 {
   "name": "Place",
-  "base": "PersistedModel",
+  "base": "persistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
   },
   "properties": {
     "name": {
       "type": "string",
       "required": true
     },
-    "latitude": {
-      "type": "geopoint"
-    },
-    "longitude": {
+    "location": {
       "type": "geopoint"
     },
     "ranking": {
@@ -28,6 +28,12 @@
       "type": "string"
     },
     "address": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "number"
+    },
+    "phone": {
       "type": "string"
     }
   },
@@ -50,6 +56,12 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     }
   ],
   "methods": {}

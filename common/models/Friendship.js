@@ -81,10 +81,10 @@ module.exports = function(Friendship) {
     });
   };
   Friendship.accept = (token, next) => {
-    console.log(token);
     Friendship.findOne({where: {token,}}).then(friendship => {
       if(friendship){
         friendship.catRequestStatusId = 3;
+        friendship.token = '';
         Friendship.upsert(friendship).then(success => {
           next(null,success);
         })
@@ -99,7 +99,7 @@ module.exports = function(Friendship) {
    *
    **/
   Friendship.remoteMethod('sendRequest', {
-    accepts: [{arg: 'customerId1', type: 'number', required: true},
+    accepts: [{arg: 'customerId', type: 'number', required: true},
               {arg: 'customer2Id', type: 'number', required: true}],
     http: {path: '/sendRequest', verb: 'post'},
     returns: {root: true, type: 'object'},
