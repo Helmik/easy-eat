@@ -17,10 +17,13 @@
     "loopback": "^2.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
+    "loopback-component-storage": "^3.2.0",
+    "loopback-connector-mongodb": "^1.18.1",
     "loopback-connector-mysql": "^2.4.1",
     "loopback-datasource-juggler": "^2.39.0",
     "loopback-ds-timestamp-mixin": "^3.4.1",
     "serve-favicon": "^2.0.1",
+    "storage": "^0.2.0",
     "strong-error-handler": "^2.0.0"
   },
   "devDependencies": {

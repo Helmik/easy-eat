@@ -3,16 +3,6 @@
     "name": "db",
     "connector": "memory"
   },
-  "mySqlDb": {
-    "host": "localhost",
-    "port": 3306,
-    "url": "",
-    "database": "easy-eat",
-    "password": "root",
-    "name": "mySqlDb",
-    "user": "root",
-    "connector": "mysql"
-  },
   "gmail": {
     "name": "gmail",
     "defaultForType": "mail",
@@ -29,5 +19,27 @@
         }
       }
     ]
+  },
+  "MyStorageConnector": {
+    "name": "MyStorageConnector",
+    "connector": "storage",
+    "provider": "filesystem",
+    "root": "./server/storage"
+  },
+  "mongoConnector": {
+    "host": "ds153710.mlab.com",
+    "port": 53710,
+    "url": "mongodb://admin:admin@ds153710.mlab.com:53710/easy-eat",
+    "database": "easy-eat",
+    "password": "admin",
+    "name": "mongoConnector",
+    "user": "admin",
+    "connector": "mongodb"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/storage"
   }
 }

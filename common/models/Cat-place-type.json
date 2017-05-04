@@ -1,0 +1,28 @@
+{
+  "name": "CatPlaceType",
+  "base": "persistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "genericIcon": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "products": {
+      "type": "hasMany",
+      "model": "Product",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

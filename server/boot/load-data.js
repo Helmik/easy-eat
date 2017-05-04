@@ -15,7 +15,7 @@ module.exports = function(app) {
     return Object.keys(props.all_models).filter(function(current) {return props.exclude.indexOf(current) < 0});
   }
   // Get mysql connection
-  const mysql = app.dataSources.mySqlDb;
+  const mysql = app.dataSources.mongoConnector;
   mysql.isActual(getModels(), function(error, actual) {
     if (error) throw error;
     if (!actual) {

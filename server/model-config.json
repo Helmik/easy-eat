@@ -15,77 +15,85 @@
     ]
   },
   "AccessToken": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": false
   },
   "ACL": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": false
   },
   "user": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "CatStatus": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "CatPortion": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "CatDiscountType": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Customer": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Friendship": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Product": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Price": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Discount": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Visit": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Place": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "Email": {
     "dataSource": "gmail"
   },
   "CatRequestStatus": {
-    "dataSource": "mySqlDb",
+    "dataSource": "mongoConnector",
     "public": true
   },
   "persistedModel": {
-    "dataSource": "mySqlDb",
+    "dataSource": "db",
     "public": false
+  },
+  "CatPlaceType": {
+    "dataSource": "mongoConnector",
+    "public": true
+  },
+  "Container": {
+    "dataSource": "storage",
+    "public": true
   }
 }
