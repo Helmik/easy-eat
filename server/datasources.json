@@ -36,10 +36,10 @@
     "user": "admin",
     "connector": "mongodb"
   },
-  "storage": {
-    "name": "storage",
+  "placesStorage": {
+    "name": "placesStorage",
     "connector": "loopback-component-storage",
     "provider": "filesystem",
-    "root": "./server/storage"
+    "root": "./server/storage/places"
   }
 }

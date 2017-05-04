@@ -93,7 +93,7 @@
     "public": true
   },
   "Container": {
-    "dataSource": "storage",
+    "dataSource": "placesStorage",
     "public": true
   }
 }

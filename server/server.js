@@ -1,9 +1,34 @@
 'use strict';
-
+var  fs = require('fs');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
+
+function createDirectory(path, dirName) {
+  if(!fs.existsSync(path + dirName)) {
+    fs.mkdirSync(path + dirName);
+    console.log("Created " + path + dirName);
+  }
+}
+let baseURL = './server/';
+let directory = {
+  storage: {
+    places: null
+  }
+}
+
+
+function fetchDirectories(tree, path) {
+  if(tree) {
+    for(let key in tree) {
+      createDirectory(path,  key);
+      fetchDirectories(tree[key], path + key + '/');
+    }
+  }
+}
+
+fetchDirectories(directory, baseURL);
 
 app.start = function() {
   // start the web server
